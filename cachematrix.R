@@ -9,24 +9,22 @@
 ## that calls for the calculation or otherwise retrieves the result
 
 
-makeCacheMatrix <- function(x = matrix()) {
+makeCacheMatrix <- function(x = matrix()){
 
-        matriz <- NULL
+     matriz <- NULL
         
-        
-        set <- function(y) {
-                x <<- y
-                matriz <<- NULL
+     set <- function(y) {
+           x <<- y
+           matriz <<- NULL
         }
         
-        
-        get <- function() {x}
+        get <- function(){x}
         
         storeinverse <- function(inverso){ 
                 matriz <<- inverso
         }
         
-        getinverse <- function() {matriz}
+        getinverse <- function(){matriz}
         
         list(set = set,
              get = get,
@@ -48,11 +46,10 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
 
-                matriz <- x$getinverse()
+    matriz <- x$getinverse()
                 
-                while (!is.null(matriz)) 
-                {
-                        message("not calculating, looking in cache")
+    while (!is.null(matriz)) {
+                        message("not calculating inverse, looking in cache")
                         return(matriz)
                 }
                 
